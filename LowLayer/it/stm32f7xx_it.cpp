@@ -50,7 +50,7 @@ void DebugMon_Handler (void)
 }
 
 
-#if (PROJ_USE_FREERTOS == 0)
+#if (PROJ_USE_FREERTOS == SET_OFF)
 
 	void SVC_Handler (void)
 	{
@@ -66,11 +66,7 @@ void DebugMon_Handler (void)
 
 	void SysTick_Handler (void)
 	{
-		#if (DRV_HAL_TIMER)
-			HAL_IncTick();
-		#else
-			;
-		#endif
+		HAL_IncTick();
 	}
 
 #endif

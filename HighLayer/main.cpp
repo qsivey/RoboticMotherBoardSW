@@ -65,23 +65,17 @@ int main (void)
 	/*                         Initialization                         */
 	/* ______________________________________________________________ */
 
-	/*  - - - - - - - - - - - - Hardware Init - - - - - - - - - - - - */
-
 	MPU_Config();
-
 	HAL_Init();
-
 	SystemClock_Config();
 
-	/* - - - - - - - - - - Hardware-Software Init - - - - - - - - - - - */
+	/* Demo task */
 	xTaskCreate(PictureTest, "Test", configMINIMAL_STACK_SIZE * 10, NULL, OS_MEDIUM_PRIORITY, NULL);
 
+	/* FreeRTOS start */
 	vTaskStartScheduler();
 
-	while (1)
-	{
-		;
-	}
+	while (1);
 }
 
 
